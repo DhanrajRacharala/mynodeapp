@@ -2,7 +2,11 @@
 
 // importing express
 
+
+
 const express = require ("express");
+
+const db =  require("./db")
 
 const app = express()
 
@@ -18,9 +22,14 @@ app.get("/myapp", (request,response) => {
     response.send("Hello world");
 })
 
-// listen(port, function)
-// funtion return server start or fail
-
-app.listen(5000, () => {
-    console.log("Running on port 5000");
+db.connect().then(() => console.log("Database is Connected"))
+.then(() => {
+    // listen(port, function)
+    // funtion return server start or fail
+    app.listen(5000, () => {
+        console.log("Running on port 5000");
+    })
 })
+
+
+
