@@ -10,17 +10,23 @@ const db =  require("./db")
 
 const app = express()
 
-// use(route, function)
+// import controllers router
 
-app.use(express.json())
+const routes = require("./controllers/controller.user")
 
-app.get("/", (request, response) => {
-    response.send("HI");
-})
+app.use("/api",routes)
 
-app.get("/myapp", (request,response) => {
-    response.send("Hello world");
-})
+
+
+//app.use(express.json())
+
+// app.get("/", (request, response) => {
+//     response.send("HI");
+// })
+
+// app.get("/myapp", (request,response) => {
+//     response.send("Hello world");
+// })
 
 db.connect().then(() => console.log("Database is Connected"))
 .then(() => {
