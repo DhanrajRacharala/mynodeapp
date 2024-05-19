@@ -6,3 +6,7 @@ module.exports.getAllUsers = async () => {
     return user
 }
 
+module.exports.createUser = async(data) => {
+    const user = await db.query('INSERT INTO public.crudoperations (name, age, profession) VALUES ($1, $2, $3)',[data.name, data.age, data.profession])
+    return user
+}

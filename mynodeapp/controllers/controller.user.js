@@ -17,4 +17,13 @@ router.get("/users", async(request,response) => {
     response.send(users)
 })
 
+router.post("/createuser/", async(request,response) => {
+    const data = request.body
+    const users = await services.createUser(data)
+   //console.log(data)
+    
+     response.json({message:"user added successfully"})
+    
+})
+
 module.exports = router
