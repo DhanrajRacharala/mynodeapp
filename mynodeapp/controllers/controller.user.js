@@ -26,4 +26,30 @@ router.post("/createuser/", async(request,response) => {
     
 })
 
+router.get("/user/:name/", async(request, response)=> {
+    const name = request.params.name
+    const user = await services.getUser(name)
+    response.send(user.rows)
+
+})
+
+router.put("/updateuser/:name", async(request, response) => {
+    const name = request.params.name
+    const data = request.body
+    const updateduser = await services.updateUser(name, data)
+    response.json({message:"User is updated"})
+})
+
+
+router.delete("/deleteuser/:name", async(request, response) => {
+    const name = request.params.name
+    // const data = request.body
+    const deleteduser = await services.deleteUser(name)
+
+    response.json({message:`${name} is Deleted successfully`})
+})
+
+
+
+
 module.exports = router
