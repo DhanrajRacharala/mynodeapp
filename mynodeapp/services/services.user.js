@@ -24,6 +24,6 @@ module.exports.updateUser = async(name,data) => {
 
 module.exports.deleteUser = async(name) => {
     const user = await db.query("DELETE FROM public.crudoperations WHERE name = $1",[name])
-
+    
     return user
 }
